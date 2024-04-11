@@ -1,0 +1,20 @@
+services:
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    networks:
+      - back-tier
+    ports:
+      - "3000"
+  proxy:
+    build:
+      context: ./proxy-server
+      dockerfile: Dockerfile
+    networks:
+      - back-tier
+
+    ports:
+      - "8080:8080"
+networks:
+  back-tier:
